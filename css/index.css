@@ -1,0 +1,35 @@
+:root {
+  --avatar-size: 350px;
+  --bg-color: #4f5b3399;
+}
+
+html,
+body {
+  height: 100%;
+  background-image: url("../images/leaf_bg.jpeg");
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  height: var(--avatar-size);
+  width: var(--avatar-size);
+  border-radius: var(--avatar-size);
+  background-color: var(--bg-color);
+  box-shadow: var(--bg-color) 0px 0px 20px 5px;
+  transition: 0.3s ease-out;
+}
+
+.avatar:hover {
+  box-shadow: var(--bg-color) 0px 0px 200px 10px;
+}
+
+.avatar > img {
+  height: 100%;
+  border-radius: var(--avatar-size);
+}
