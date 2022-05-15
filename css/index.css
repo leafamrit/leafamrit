@@ -1,35 +1,79 @@
 :root {
-  --avatar-size: 350px;
-  --bg-color: #4f5b3399;
+  --avatar-size: 250px;
+  --bg-color: #242916;
+  --fg-color: #eeffc3;
 }
 
 html,
 body {
   height: 100%;
+  margin: 0;
   background-image: url("../images/leaf_bg.jpeg");
+  background-size: cover;
 }
 
-.wrapper {
+.sidebar {
+  background-color: var(--bg-color);
+  box-shadow: var(--bg-color) 0px 0px 5px 5px;
+  transition: 0.3s ease-out;
+  height: 100%;
+  opacity: 0.9;
+}
+
+.sidebar:hover {
+  box-shadow: var(--bg-color) 0px 0px 0px 5px;
+  opacity: 1;
+}
+
+.flex-container {
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: #0003;
 }
 
 .avatar {
+  margin: 2em;
   height: var(--avatar-size);
   width: var(--avatar-size);
   border-radius: var(--avatar-size);
-  background-color: var(--bg-color);
-  box-shadow: var(--bg-color) 0px 0px 20px 5px;
+  background-color: var(--fg-color);
   transition: 0.3s ease-out;
 }
 
 .avatar:hover {
-  box-shadow: var(--bg-color) 0px 0px 200px 10px;
+  box-shadow: var(--fg-color) 0px 0px 7px 5px;
 }
 
-.avatar > img {
-  height: 100%;
+.avatar>img {
+  height: var(--avatar-size);
+  width: var(--avatar-size);
+  margin-top: 0;
   border-radius: var(--avatar-size);
+  transition: 0.3s ease-out;
+}
+
+.avatar>img:hover {
+  border-radius: calc(var(--avatar-size) / 10);
+  margin-top: 10px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.content {
+  margin: 2em;
+  color: var(--fg-color);
+  text-align: right;
+}
+
+.content>.name {
+  font-family: 'Arvo', serif;
+  font-size: 5em;
 }
