@@ -12,7 +12,7 @@ body {
   background-size: cover;
 }
 
-.flex-container {
+.main-container {
   height: 100%;
   display: flex;
   align-items: flex-start;
@@ -88,21 +88,18 @@ body {
   flex-direction: column;
   font-family: 'Roboto Flex', sans-serif;
   font-weight: 200;
-}
-
-.content {
   margin: 2em;
   color: var(--fg-color);
 }
 
-.content>.namediv {
+.namediv {
   font-family: 'Roboto Flex', sans-serif;
   letter-spacing: 6px;
   font-style: italic;
   margin: 1em;
 }
 
-h1.name {
+h1#nameheader {
   font-weight: 500;
   font-size: 4em;
   margin: 0;
