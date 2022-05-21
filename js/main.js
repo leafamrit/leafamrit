@@ -40,4 +40,6 @@ const animateName = (ele) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   animateName(document.getElementById('nameheader'));
+
+  // document.documentElement.style.setProperty('--avatar-size', '300px')
 });
