@@ -1,4 +1,4 @@
-const typingSpeed = 100;
+const typingSpeed = 50;
 
 const animateTyping = (inputText, ele) => {
   return new Promise((resolve, reject) => {
@@ -23,7 +23,7 @@ const animateBackspace = (ele, backSpaceCount) => {
         clearInterval(stepTimer);
         resolve();
       }
-    }, typingSpeed + 100);
+    }, typingSpeed * 2);
   });
 }
 
