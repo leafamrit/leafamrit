@@ -4,6 +4,7 @@
   --bg-color: #242916;
   --fg-color: #fff3bc;
   --load-anim-duration: 2.5s;
+  --dark-bg-blur: #0009;
 }
 
 html,
@@ -21,7 +22,7 @@ body {
   align-items: center;
   flex-direction: column;
   flex-wrap: nowrap;
-  background-color: #0003;
+  background-color: var(--dark-bg-blur);
   justify-content: center;
   animation: var(--load-anim-duration) revealbg ease-in;
 }
@@ -32,7 +33,7 @@ body {
   }
 
   to {
-    background-color: #0003;
+    background-color: var(--dark-bg-blur);
   }
 }
 
@@ -43,7 +44,7 @@ body {
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: nowrap;
-  background-color: #0003;
+  background-color: var(--dark-bg-blur);
 }
 
 .sidebar {
