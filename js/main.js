@@ -45,9 +45,10 @@ const animateName = ele => {
 const completeLoadAnimation = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      document.querySelector('.sidebar').classList.add('clickable');
-      document.querySelector('.clickable').addEventListener('click', () => {
-        let sidebar = document.querySelector('.sidebar');
+      let sidebar = document.querySelector('.sidebar');
+      sidebar.classList.add('clickable');
+      document.querySelector('.click-block-wrapper').classList.add('hidden');
+      sidebar.addEventListener('click', () => {
         sidebar.style.opacity = 0;
         setTimeout(() => {
           document.querySelector('.main-container-before').setAttribute('class', 'main-container-after');
@@ -56,13 +57,14 @@ const completeLoadAnimation = () => {
           setTimeout(() => {
             sidebar.style.borderRadius = '20px';
             sidebar.style.opacity = 0.9;
+            sidebar.classList.remove('clickable');
             document.querySelector('.namediv').classList.remove('hidden');
             resolve();
           }, 350);
         }, 350);
-      });
+      }, { once: true });
     }, 2400);
-  })
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
