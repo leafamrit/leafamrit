@@ -3,6 +3,7 @@
   /* make 200px after click */
   --bg-color: #242916;
   --fg-color: #fff3bc;
+  --load-anim-duration: 2.5s;
 }
 
 html,
@@ -11,9 +12,10 @@ body {
   margin: 0;
   background-image: url("../images/leaf_bg.jpeg");
   background-size: cover;
+  background-color: var(--bg-color);
 }
 
-.main_container-before {
+.main-container-before {
   height: 100%;
   display: flex;
   align-items: center;
@@ -21,6 +23,17 @@ body {
   flex-wrap: nowrap;
   background-color: #0003;
   justify-content: center;
+  animation: var(--load-anim-duration) revealbg ease-in;
+}
+
+@keyframes revealbg {
+  from {
+    background-color: #000f;
+  }
+
+  to {
+    background-color: #0003;
+  }
 }
 
 .main-container-after {
@@ -40,8 +53,23 @@ body {
   opacity: 0.9;
   margin: 1em;
   padding: 2em;
-  border-radius: 20px;
   box-sizing: border-box;
+  animation: var(--load-anim-duration) sidebarload ease-in;
+  border-radius: 40px;
+}
+
+@keyframes sidebarload {
+  from {
+    border-radius: var(--avatar-size);
+  }
+
+  to {
+    border-radius: 40px;
+  }
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .sidebar:hover {
@@ -74,6 +102,7 @@ body {
   border-radius: var(--avatar-size);
   background-color: var(--fg-color);
   transition: 0.3s ease-out;
+  position: relative;
 }
 
 .avatar:hover {
@@ -84,22 +113,74 @@ body {
   transition: 0.3s;
   height: var(--avatar-size);
   width: var(--avatar-size);
-  margin-top: 0;
+  margin-top: 1px;
   border-radius: var(--avatar-size);
+  position: relative;
 }
 
 #avatar-outline-path {
-  /* animation: 2s linedrawsvg linear; */
+  display: inline;
+  stroke-width: 12;
+  stroke-miterlimit: 4;
+  fill: none;
+  animation: var(--load-anim-duration) linedrawsvg ease-in;
+}
+
+@keyframes linedrawsvg {
+  0% {
+    stroke-dasharray: 1000;
+    stroke: var(--bg-color);
+  }
+
+  75% {
+    stroke-dasharray: 600;
+    stroke: var(--bg-color);
+  }
+
+  100% {
+    stroke-dasharray: 0;
+    stroke-opacity: 0;
+    stroke: var(--fg-color);
+  }
+}
+
+#avatar_svg:hover {
+  border-radius: calc(var(--avatar-size) / 10);
+  margin-top: 10px;
 }
 
 #avatar_png {
-  display: none;
   height: var(--avatar-size);
   width: var(--avatar-size);
-  margin-top: 0;
   border-radius: var(--avatar-size);
   transition: 0.3s ease-out;
   margin-top: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: var(--load-anim-duration) bouncefadein ease-in;
+}
+
+@keyframes bouncefadein {
+  0% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  85% {
+    opacity: 0.5;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 #avatar_png:hover {
@@ -110,7 +191,7 @@ body {
 .content-container {
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto Flex', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   font-weight: 200;
   margin: 2em;
   color: var(--fg-color);
@@ -120,21 +201,15 @@ body {
   display: none !important;
 }
 
-.namediv {
-  font-family: 'Roboto Flex', sans-serif;
-  letter-spacing: 6px;
-  font-style: italic;
-  margin: 1em;
-}
-
 h1#nameheader {
-  font-weight: 500;
+  font-weight: 300;
   font-size: 4em;
   margin: 0;
 }
 
 .details>p {
-  width: 50%;
-  font-style: italic;
+  width: 70%;
   font-size: 1.2em;
+  opacity: 0;
+  transition: 0.5s;
 }
