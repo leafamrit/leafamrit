@@ -1,4 +1,6 @@
 const typingSpeed = 50;
+const cssTransitionTime = 350;
+const cssLoadAnimationDuration = 2400;
 
 const animateTyping = (inputText, ele) => {
   return new Promise((resolve, reject) => {
@@ -69,25 +71,33 @@ const completeLoadAnimation = () => {
             setTimeout(() => {
               sidebar.style.borderRadius = "20px";
               sidebar.style.opacity = 0.9;
+              sidebar.style.height = "calc(200px + 7.6em)";
               sidebar.classList.remove("clickable");
               document.querySelector(".namediv").classList.remove("hidden");
               resolve();
-            }, 350);
-          }, 350);
+            }, cssTransitionTime);
+          }, cssTransitionTime);
         },
         { once: true }
       );
-    }, 2400);
+    }, cssLoadAnimationDuration);
   });
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   completeLoadAnimation().then(() => {
     animateName(document.getElementById("nameheader")).then(() => {
-      document.querySelector(".details").classList.remove("hidden");
+      document.querySelector(".sidebar").style.height = "calc(200px + 19.1em)";
       setTimeout(() => {
-        document.querySelector(".details>p").style.opacity = 1;
-      }, 100);
+        document.querySelector(".details").classList.remove("hidden");
+        document.querySelector(".hr-spacer").classList.remove("hidden");
+        document.querySelector(".nav-buttons").classList.remove("hidden");
+        setTimeout(() => {
+          document.querySelector(".details>p").style.opacity = 1;
+          document.querySelector(".hr-spacer").style.opacity = 1;
+          document.querySelector(".nav-buttons").style.opacity = 1;
+        }, 100);
+      }, 300);
     });
   });
 });

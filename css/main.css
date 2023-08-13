@@ -4,7 +4,7 @@
   --bg-color: #242916;
   --fg-color: #fff3bc;
   --load-anim-duration: 2.5s;
-  --dark-bg-blur: #0009;
+  --dark-bg-blur: #0002;
 }
 
 html,
@@ -203,9 +203,9 @@ body {
   display: flex;
   flex-direction: column;
   font-family: 'Roboto Mono', monospace;
-  font-weight: 200;
+  font-weight: 400;
   margin: 2em;
-  color: var(--fg-color);
+  color: var(--bg-color);
 }
 
 .hidden {
@@ -213,7 +213,7 @@ body {
 }
 
 h1#nameheader {
-  font-weight: 300;
+  font-weight: 500;
   font-size: 4em;
   margin: 0;
 }
@@ -227,4 +227,31 @@ h1#nameheader {
 
 .hr-spacer {
   margin: 2em 0 2em 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+}
+
+.hr-spacer>hr {
+  border: 1px solid var(--fg-color);
+  opacity: 0.2;
+}
+
+.nav-buttons {
+  color: var(--fg-color);
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 300;
+  font-size: 1.5em;
+  opacity: 0;
+  transition: 0.3s ease-out;
+}
+
+.nav-button-list>li {
+  margin: 0.5em 0 0.5em 0;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+
+.nav-button-list>li:hover {
+  text-decoration: underline;
+  opacity: 0.8;
 }
