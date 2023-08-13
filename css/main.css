@@ -1,226 +1,230 @@
 :root {
-    --avatar-size: 300px;
-    /* make 200px after click */
-    --bg-color: #242916;
-    --fg-color: #fff3bc;
-    --load-anim-duration: 2.5s;
-    --dark-bg-blur: #0007;
+  --avatar-size: 300px;
+  /* make 200px after click */
+  --bg-color: #242916;
+  --fg-color: #fff3bc;
+  --load-anim-duration: 2.5s;
+  --dark-bg-blur: #0009;
 }
 
 html,
 body {
-    height: 100%;
-    margin: 0;
-    background-image: url('../images/leaf_bg.jpeg');
-    background-size: cover;
-    background-color: var(--bg-color);
+  height: 100%;
+  margin: 0;
+  background-image: url("../images/leaf_bg.jpeg");
+  background-size: cover;
+  background-color: var(--bg-color);
 }
 
 .click-block-wrapper {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    display: block;
-    z-index: 9999;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 9999;
 }
 
 .main-container-before {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    background-color: var(--dark-bg-blur);
-    justify-content: center;
-    animation: var(--load-anim-duration) revealbg ease-in;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  background-color: var(--dark-bg-blur);
+  justify-content: center;
+  /* animation: var(--load-anim-duration) revealbg ease-in; */
 }
 
 @keyframes revealbg {
-    from {
-        background-color: #000f;
-    }
+  from {
+    background-color: #000f;
+  }
 
-    to {
-        background-color: var(--dark-bg-blur);
-    }
+  to {
+    background-color: var(--dark-bg-blur);
+  }
 }
 
 .main-container-after {
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    background-color: var(--dark-bg-blur);
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: var(--dark-bg-blur);
 }
 
 .sidebar {
-    background-color: var(--bg-color);
-    box-shadow: var(--bg-color) 0px 0px 5px 5px;
-    transition: 0.3s ease-out;
-    opacity: 0.9;
-    margin: 1em;
-    padding: 2em;
-    box-sizing: border-box;
-    animation: var(--load-anim-duration) sidebarload ease-in;
-    border-radius: 40px;
+  background-color: var(--bg-color);
+  box-shadow: var(--bg-color) 0px 0px 5px 5px;
+  transition: 0.3s ease-out;
+  opacity: 0.9;
+  margin: 2em;
+  padding: 2em;
+  box-sizing: border-box;
+  animation: var(--load-anim-duration) sidebarload ease-in;
+  border-radius: 40px;
 }
 
 @keyframes sidebarload {
-    from {
-        border-radius: var(--avatar-size);
-    }
+  from {
+    border-radius: var(--avatar-size);
+  }
 
-    to {
-        border-radius: 40px;
-    }
+  to {
+    border-radius: 40px;
+  }
 }
 
 .clickable {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .sidebar:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .soc-media {
-    margin-top: 1.5em;
-    color: var(--fg-color);
-    text-align: justify;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
+  margin-top: 1.5em;
+  color: var(--fg-color);
+  text-align: justify;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
 }
 
-.soc-media > a {
-    margin: 0.1em;
-    color: inherit;
-    transition: 0.3s ease-out;
+.soc-media>a {
+  margin: 0.1em;
+  color: inherit;
+  transition: 0.3s ease-out;
 }
 
-.soc-media > a:hover {
-    opacity: 0.8;
+.soc-media>a:hover {
+  opacity: 0.8;
 }
 
 .avatar {
-    height: var(--avatar-size);
-    width: var(--avatar-size);
-    border-radius: var(--avatar-size);
-    background-color: var(--fg-color);
-    transition: 0.3s ease-out;
-    position: relative;
+  height: var(--avatar-size);
+  width: var(--avatar-size);
+  border-radius: var(--avatar-size);
+  background-color: var(--fg-color);
+  transition: 0.3s ease-out;
+  position: relative;
 }
 
 .avatar:hover {
-    box-shadow: var(--fg-color) 0px 0px 7px 5px;
+  box-shadow: var(--fg-color) 0px 0px 7px 5px;
 }
 
 #avatar_svg {
-    transition: 0.3s;
-    height: var(--avatar-size);
-    width: var(--avatar-size);
-    margin-top: 1px;
-    border-radius: var(--avatar-size);
-    position: relative;
+  transition: 0.3s;
+  height: var(--avatar-size);
+  width: var(--avatar-size);
+  margin-top: 1px;
+  border-radius: var(--avatar-size);
+  position: relative;
 }
 
 #avatar-outline-path {
-    display: inline;
-    stroke-width: 12;
-    stroke-miterlimit: 4;
-    fill: none;
-    animation: var(--load-anim-duration) linedrawsvg ease-in;
+  display: inline;
+  stroke-width: 12;
+  stroke-miterlimit: 4;
+  fill: none;
+  animation: var(--load-anim-duration) linedrawsvg ease-in;
 }
 
 @keyframes linedrawsvg {
-    0% {
-        stroke-dasharray: 1000;
-        stroke: var(--bg-color);
-    }
+  0% {
+    stroke-dasharray: 1000;
+    stroke: var(--bg-color);
+  }
 
-    75% {
-        stroke-dasharray: 600;
-        stroke: var(--bg-color);
-    }
+  75% {
+    stroke-dasharray: 600;
+    stroke: var(--bg-color);
+  }
 
-    100% {
-        stroke-dasharray: 0;
-        stroke-opacity: 0;
-        stroke: var(--fg-color);
-    }
+  100% {
+    stroke-dasharray: 0;
+    stroke-opacity: 0;
+    stroke: var(--fg-color);
+  }
 }
 
 #avatar_svg:hover {
-    border-radius: calc(var(--avatar-size) / 10);
-    margin-top: 10px;
+  border-radius: calc(var(--avatar-size) / 10);
+  margin-top: 10px;
 }
 
 #avatar_png {
-    height: var(--avatar-size);
-    width: var(--avatar-size);
-    border-radius: var(--avatar-size);
-    transition: 0.3s ease-out;
-    margin-top: 1px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    animation: var(--load-anim-duration) bouncefadein ease-in;
+  height: var(--avatar-size);
+  width: var(--avatar-size);
+  border-radius: var(--avatar-size);
+  transition: 0.3s ease-out;
+  margin-top: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: var(--load-anim-duration) bouncefadein ease-in;
 }
 
 @keyframes bouncefadein {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    60% {
-        opacity: 0;
-    }
+  60% {
+    opacity: 0;
+  }
 
-    80% {
-        opacity: 0.5;
-    }
+  80% {
+    opacity: 0.5;
+  }
 
-    90% {
-        opacity: 0;
-    }
+  90% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 #avatar_png:hover {
-    border-radius: calc(var(--avatar-size) / 10);
-    margin-top: 10px;
+  border-radius: calc(var(--avatar-size) / 10);
+  margin-top: 10px;
 }
 
 .content-container {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 200;
-    margin: 2em;
-    color: var(--fg-color);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 200;
+  margin: 2em;
+  color: var(--fg-color);
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 h1#nameheader {
-    font-weight: 300;
-    font-size: 4em;
-    margin: 0;
+  font-weight: 300;
+  font-size: 4em;
+  margin: 0;
 }
 
-.details > p {
-    width: 70%;
-    font-size: 1.2em;
-    opacity: 0;
-    transition: 0.5s;
+.details>p {
+  width: 70%;
+  font-size: 1.2em;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.hr-spacer {
+  margin: 2em 0 2em 0;
 }
