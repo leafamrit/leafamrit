@@ -4,7 +4,7 @@
   --bg-color: #242916;
   --fg-color: #fff3bc;
   --load-anim-duration: 2.5s;
-  --dark-bg-blur: #0002;
+  --dark-bg-blur: #0004;
 }
 
 html,
@@ -34,7 +34,7 @@ body {
   flex-wrap: nowrap;
   background-color: var(--dark-bg-blur);
   justify-content: center;
-  /* animation: var(--load-anim-duration) revealbg ease-in; */
+  animation: var(--load-anim-duration) revealbg ease-in;
 }
 
 @keyframes revealbg {
