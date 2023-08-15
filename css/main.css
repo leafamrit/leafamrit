@@ -13,6 +13,7 @@ body {
   margin: 0;
   background-image: url("../images/leaf_bg.jpeg");
   background-size: cover;
+  background-position: bottom;
   background-color: var(--bg-color);
 }
 
@@ -218,7 +219,15 @@ h1#nameheader {
   margin: 0;
 }
 
-.details>p {
+.content-div>p {
+  width: 70%;
+  font-size: 1.2em;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.content-div>div {
+  margin: 1.5em 0 1.5em 0;
   width: 70%;
   font-size: 1.2em;
   opacity: 0;

@@ -1,6 +1,8 @@
 const typingSpeed = 50;
 const cssTransitionTime = 350;
+const cssUnhideDelay = 100;
 const cssLoadAnimationDuration = 2400;
+const defaultHeaderLength = 15;
 
 const animateTyping = (inputText, ele) => {
   return new Promise((resolve, reject) => {
@@ -16,7 +18,7 @@ const animateTyping = (inputText, ele) => {
   });
 };
 
-const animateBackspace = (ele, backSpaceCount) => {
+const animateBackspace = (backSpaceCount, ele) => {
   return new Promise((resolve, reject) => {
     let stepTimer = setInterval(() => {
       ele.innerHTML = ele.innerHTML.slice(0, -1);
@@ -36,7 +38,7 @@ const animateName = (ele) => {
     const nameTextS2 = "pratyay amrit";
 
     animateTyping(nameTextS1, ele).then(() => {
-      animateBackspace(ele, nameTextS1Length).then(() => {
+      animateBackspace(nameTextS1Length, ele).then(() => {
         animateTyping(nameTextS2, ele).then(() => {
           resolve();
         });
@@ -84,20 +86,62 @@ const completeLoadAnimation = () => {
   });
 };
 
+const animateHeader = (headerText, ele) => {
+  return new Promise((resolve, reject) => {
+    let inputText = " ~ " + headerText;
+    let backSpaceCount = ele.innerHTML.length - defaultHeaderLength;
+    animateBackspace(backSpaceCount, ele).then(() => {
+      animateTyping(inputText, ele).then(() => {
+        resolve();
+      });
+    });
+  });
+};
+
+const hideAllContentSectionsExceptClicked = (contentSectionId) => {
+  document.querySelectorAll(".content-div>div").forEach((contentDiv) => {
+    if (!contentDiv.classList.contains("hidden")) {
+      contentDiv.style.opacity = 0;
+      setTimeout(() => {
+        contentDiv.classList.add("hidden");
+      }, cssTransitionTime);
+    }
+  });
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   completeLoadAnimation().then(() => {
     animateName(document.getElementById("nameheader")).then(() => {
       document.querySelector(".sidebar").style.height = "calc(200px + 19.1em)";
       setTimeout(() => {
-        document.querySelector(".details").classList.remove("hidden");
+        document.querySelector(".content-div").classList.remove("hidden");
         document.querySelector(".hr-spacer").classList.remove("hidden");
         document.querySelector(".nav-buttons").classList.remove("hidden");
         setTimeout(() => {
-          document.querySelector(".details>p").style.opacity = 1;
+          document.querySelector(".content-div>div").style.opacity = 1;
           document.querySelector(".hr-spacer").style.opacity = 1;
           document.querySelector(".nav-buttons").style.opacity = 1;
-        }, 100);
-      }, 300);
+
+          // add event listeners for navigation
+          document
+            .querySelectorAll(".nav-button-list>li>a")
+            .forEach((navLink) => {
+              navLink.addEventListener("click", () => {
+                let contentSectionId = "section-" + navLink.id.split("-")[1];
+                hideAllContentSectionsExceptClicked(contentSectionId);
+                animateHeader(
+                  navLink.innerText,
+                  document.getElementById("nameheader")
+                ).then(() => {
+                  document.getElementById(contentSectionId).classList.remove("hidden");
+                  setTimeout(() => {
+                    document.getElementById(contentSectionId).style.opacity = 1;
+                  }, cssUnhideDelay);
+                });
+              });
+            });
+        }, cssUnhideDelay);
+      }, cssTransitionTime);
     });
   });
 });
